@@ -4,10 +4,19 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { siteConfig } from "@/lib/config";
 import { Amplify } from 'aws-amplify';
-import outputs from '../../amplify_outputs.json';
 
-// Amplify設定の初期化
-Amplify.configure(outputs);
+// Amplify設定の初期化（エラーハンドリング付き）
+try {
+  const outputs = require('../../amplify_outputs.json');
+  if (outputs && outputs.auth && outputs.auth.user_pool_id !== 'placeholder') {
+    Amplify.configure(outputs);
+    console.log('Amplify configured successfully');
+  } else {
+    console.log('Amplify configuration skipped - using placeholder values');
+  }
+} catch (error) {
+  console.warn('Amplify configuration failed:', error);
+}
 
 const inter = Inter({
   variable: "--font-inter",

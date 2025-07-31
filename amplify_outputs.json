@@ -1,3 +1,9 @@
 {
-  "version": "1.4"
+  "version": "1.4",
+  "auth": {
+    "aws_region": "ap-northeast-1",
+    "user_pool_id": "placeholder",
+    "user_pool_client_id": "placeholder",
+    "identity_pool_id": "placeholder"
+  }
 }
