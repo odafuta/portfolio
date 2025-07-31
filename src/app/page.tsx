@@ -1,103 +1,174 @@
-import Image from "next/image";
+import { PhotoSlider } from '@/components/features/PhotoSlider';
+import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
+import { personalPhotos } from '@/data/photos';
+import { siteConfig } from '@/lib/config';
 
-export default function Home() {
+export default function HomePage() {
+  const { personal } = siteConfig;
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen">
+      {/* ヒーローセクション */}
+      <section className="py-12 md:py-20">
+        <div className="container mx-auto max-w-container-xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            {/* 写真スライダー */}
+            <div className="order-1 lg:order-2">
+              <PhotoSlider
+                photos={personalPhotos}
+                autoplay={true}
+                interval={4000}
+                showDots={true}
+                showProgress={true}
+                className="w-full max-w-lg mx-auto lg:max-w-none"
+              />
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* テキストコンテンツ */}
+            <div className="order-2 lg:order-1 space-y-6">
+              <div className="space-y-4">
+                <h1 className="text-4xl lg:text-5xl font-bold text-secondary-900 leading-tight">
+                  IT業界で価値を創造する
+                  <span className="block text-primary-600">エンジニアを目指す</span>
+                </h1>
+                <p className="text-xl text-secondary-600 leading-relaxed">
+                  技術力と人間力の両立で、チームと社会に貢献
+                </p>
+                <p className="text-secondary-600 leading-relaxed">
+                  大学でプログラミングを学び、実践的なプロジェクトを通じて技術を磨いています。
+                  継続的な学習と成長を重視し、将来はフルスタックエンジニアとして活躍したいと考えています。
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/projects">
+                  <Button size="lg" className="w-full sm:w-auto">プロジェクトを見る</Button>
+                </Link>
+                <Link href="/about">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto">プロフィール詳細</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* プロフィール概要セクション */}
+      <section className="py-16 bg-secondary-50">
+        <div className="container mx-auto max-w-container-xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-secondary-900 mb-12">
+              プロフィール
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { label: '所属', value: personal.university },
+                { label: '専攻', value: personal.major },
+                { label: '得意分野', value: personal.skills },
+                { label: '目標', value: personal.goal },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 shadow-sm border border-secondary-100"
+                >
+                  <dt className="text-sm font-medium text-secondary-600 mb-1">
+                    {item.label}
+                  </dt>
+                  <dd className="text-lg font-semibold text-secondary-900">
+                    {item.value}
+                  </dd>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 技術スキルセクション */}
+      <section className="py-16">
+        <div className="container mx-auto max-w-container-xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center text-secondary-900 mb-12">
+              技術スキル
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                {
+                  name: 'フロントエンド',
+                  skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+                  level: '中級',
+                  color: 'bg-blue-100 text-blue-800',
+                },
+                {
+                  name: 'バックエンド',
+                  skills: ['Node.js', 'Python', 'AWS Lambda', 'DynamoDB'],
+                  level: '初級〜中級',
+                  color: 'bg-green-100 text-green-800',
+                },
+                {
+                  name: 'AI・データ分析',
+                  skills: ['scikit-learn', 'OpenAI API', '時系列解析', 'Power BI'],
+                  level: '初級',
+                  color: 'bg-purple-100 text-purple-800',
+                },
+                {
+                  name: 'インフラ・ツール',
+                  skills: ['AWS Amplify', 'GitHub', 'Docker', 'OR-Tools'],
+                  level: '初級',
+                  color: 'bg-orange-100 text-orange-800',
+                },
+              ].map((category, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl p-6 shadow-sm border border-secondary-100"
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-semibold text-secondary-900">
+                      {category.name}
+                    </h3>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${category.color}`}>
+                      {category.level}
+                    </span>
+                  </div>
+                  <div className="space-y-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <span
+                        key={skillIndex}
+                        className="inline-block bg-secondary-100 text-secondary-700 px-3 py-1 rounded-full text-sm mr-2 mb-2"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTAセクション */}
+      <section className="py-16 bg-gradient-to-r from-primary-500 to-accent-500">
+        <div className="container mx-auto max-w-container-xl px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl font-bold text-white">
+              一緒に価値を創造しませんか？
+            </h2>
+            <p className="text-xl text-white/90">
+              新しい技術への挑戦と継続的な成長で、チームに貢献したいと考えています。
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/contact">
+                <Button variant="secondary" size="lg" className="w-full sm:w-auto">お問い合わせ</Button>
+              </Link>
+              <Link href={siteConfig.links.resume}>
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary-600 w-full sm:w-auto">履歴書ダウンロード</Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

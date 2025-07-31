@@ -1,0 +1,20 @@
+{
+  "version": "45.0.0",
+  "files": {
+    "98fed7f7597e32c9575eb550b91e7188ea0012057452f0a215650dc4b9cba90b": {
+      "displayName": "amplify-portfoliosite-0622d-sandbox-b45a537831 Template",
+      "source": {
+        "path": "amplify-portfoliosite-0622d-sandbox-b45a537831.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-b950072b": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "98fed7f7597e32c9575eb550b91e7188ea0012057452f0a215650dc4b9cba90b.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
