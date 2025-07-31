@@ -13,7 +13,7 @@ export const auth = defineAuth({
     email: {
       verificationEmailStyle: "CODE",
       verificationEmailSubject: "ポートフォリオサイトへようこそ - メール認証",
-      verificationEmailBody: (createCode) =>
+      verificationEmailBody: (createCode: () => string) =>
         `認証コード: ${createCode()}。このコードを入力してアカウントを確認してください。`,
     },
   },

@@ -76,7 +76,6 @@ portfolio-site/
 ```bash
 # リポジトリのクローン
 git clone <repository-url>
-cd portfolio-site
 
 # 依存関係のインストール
 npm install
